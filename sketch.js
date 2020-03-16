@@ -198,7 +198,7 @@ function draw() {
   		for (let i = 0; i < 150; i++){
 		snow[i].snowing();
 		}
-	}
+	} 
 
 	//spring flowers
 	if (mouseX>400 && mouseX<800 && mouseY>0 && mouseY<400) {
@@ -321,16 +321,12 @@ function mousePressed() {
 	}
 
 	if (mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
-		if(sampleIsPLaying){
-			snowSound.stop();
-			sampleIsPLaying = false;
-		} else {
-			snowSound.loop();
-			sampleIsPLaying = true;
-		}
-		
+		snowSound.loop();
 	}
 
+}
+function mouseReleased(){
+	snowSound.stop();
 }
 
 
