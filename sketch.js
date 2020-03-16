@@ -12,6 +12,7 @@ let sampleIsPLaying = false;
 
 function preload() {
   snowSound = loadSound("Sounds/Snow.mp3");
+  rainSound = loadSound("Sounds/rainsound.mp3");
 }
 
 function setup() {
@@ -319,14 +320,20 @@ function mousePressed() {
 		};
 		apple.push(newApple);
 	}
-
+	//snow sound
 	if (mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
 		snowSound.loop();
+	}
+	
+	//rain sound
+	if (mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {
+		rainSound.loop();
 	}
 
 }
 function mouseReleased(){
 	snowSound.stop();
+	rainSound.stop();
 }
 
 
