@@ -10,8 +10,8 @@ let leafSpeed = 2;
 let song, appleSound,snowSound,rainSound,springSound;
 
 function preload() {
- 	//song = loadSound("Sounds/Background.mp3");  
- 	//appleSound = loadSound("Sounds/pop.mp3");
+ 	song = loadSound("Sounds/Background.mp3");  
+ 	appleSound = loadSound("Sounds/pop.mp3");
  	//snowSound = loadSound("Sounds/Snow.mp3");
  	//rainSound = loadSound("Sounds/rainsound.mp3");
  	//springSound = loadSound("Sounds/spring.mp3");
@@ -31,7 +31,7 @@ function setup() {
 	for (let i = 0; i < 10; i++){
 		leaves[i] = new Leaf();
 	}
-	//song.play();
+	song.play();
 }
 
 
@@ -197,7 +197,13 @@ function draw() {
 	tree(x,y+400);
 	tree(x+400,y+400);	
 
-	
+	//winter falling snow
+	if (mouseIsPressed && mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
+  		for (let i = 0; i < 150; i++){
+		snow[i].snowing();
+		}
+	}
+
 	//spring flowers
 	if (mouseX>400 && mouseX<800 && mouseY>0 && mouseY<400) {
 		
@@ -222,12 +228,56 @@ function draw() {
 
 	}
 
-	
+	//Summer apples & flowers
+	if (mouseX>0 && mouseX<400 && mouseY>400 && mouseY<800) {
+		
+			for (let i = 0; i < flower.length; i++) {
+				let currentFlower = flower[i];
+				flowers(currentFlower.xpos,currentFlower.ypos);
+			}
+			for (let i = 0; i < apple.length; i++) {
+				let currentApple = apple[i];
+				apples(currentApple.xpos,currentApple.ypos,currentApple.r); 	
+  			}
 
-  	
+  	}
+
+  	//Autumn rain & leaves
+	if (mouseIsPressed && mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {
+  		for (let i = 0; i < 100; i++){
+			rain[i].raining();
+		}
+	}
+
+	if (mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {
+  		for (let i = 0; i < 10; i++){
+			leaves[i].falling();
+		}
+	}
+
+	sound();
 
 }	
 
+function sound(){
+	if (mouseIsPressed && mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400 && snowSound.isPlaying()){
+		snowSound.stop();
+	} else{
+		snowSound.play();
+	}
+
+	if (mouseX>400 && mouseX<800 && mouseY>0 && mouseY<400 && springSound.isPlaying()){
+		springSound.stop();
+	} else{
+		springSound.play();
+	}
+
+	if (mouseIsPressed && mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800 && rainSound.isPlaying()){
+		rainSound.stop();
+	} else{
+		rainSound.play();
+	}
+}
 
 function leaf(x,y) { 
 	stroke("#F97C0A ");
@@ -284,6 +334,7 @@ function mousePressed() {
 			ypos: mouseY
 		};
 		flower.push(newFlower);
+		appleSound.play();
 	}
 	if (mouseX>25 && mouseX<352 && mouseY> 462 && mouseY<705) {
 		let newApple = {
@@ -292,43 +343,8 @@ function mousePressed() {
 			r: random(10,25)
 		};
 		apple.push(newApple);
+		appleSound.play();
 	}
-
-	//winter falling snow
-
-	if (mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
-  		for (let i = 0; i < 150; i++){
-		snow[i].snowing();
-		}
-	}	
-
-	//Summer apples & flowers
-	if (mouseX>0 && mouseX<400 && mouseY>400 && mouseY<800) {
-		
-			for (let i = 0; i < flower.length; i++) {
-				let currentFlower = flower[i];
-				flowers(currentFlower.xpos,currentFlower.ypos);
-			}
-			for (let i = 0; i < apple.length; i++) {
-				let currentApple = apple[i];
-				apples(currentApple.xpos,currentApple.ypos,currentApple.r); 	
-  			}
-
-  	}
-
-  	//Autumn rain & leaves
-	if (mouseIsPressed && mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {
-  		for (let i = 0; i < 100; i++){
-			rain[i].raining();
-		}
-	}
-
-	if (mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {
-  		for (let i = 0; i < 10; i++){
-			leaves[i].falling();
-		}
-	}
-	
 }
 
 
