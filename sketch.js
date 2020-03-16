@@ -7,15 +7,7 @@ let rain = [];
 let rainSpeed = 5;
 let leaves = [];
 let leafSpeed = 2;
-let song, appleSound,snowSound,rainSound,springSound;
 
-function preload() {
- 	song = loadSound("Sounds/Background.mp3");  
- 	appleSound = loadSound("Sounds/pop.mp3");
- 	//snowSound = loadSound("Sounds/Snow.mp3");
- 	//rainSound = loadSound("Sounds/rainsound.mp3");
- 	//springSound = loadSound("Sounds/spring.mp3");
-}
 
 function setup() {
 	createCanvas(800,800);
@@ -31,7 +23,6 @@ function setup() {
 	for (let i = 0; i < 10; i++){
 		leaves[i] = new Leaf();
 	}
-	song.play();
 }
 
 
@@ -255,29 +246,8 @@ function draw() {
 		}
 	}
 
-	sound();
 
 }	
-
-function sound(){
-	if (mouseIsPressed && mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400 && snowSound.isPlaying()){
-		snowSound.stop();
-	} else{
-		snowSound.play();
-	}
-
-	if (mouseX>400 && mouseX<800 && mouseY>0 && mouseY<400 && springSound.isPlaying()){
-		springSound.stop();
-	} else{
-		springSound.play();
-	}
-
-	if (mouseIsPressed && mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800 && rainSound.isPlaying()){
-		rainSound.stop();
-	} else{
-		rainSound.play();
-	}
-}
 
 function leaf(x,y) { 
 	stroke("#F97C0A ");
@@ -334,7 +304,6 @@ function mousePressed() {
 			ypos: mouseY
 		};
 		flower.push(newFlower);
-		appleSound.play();
 	}
 	if (mouseX>25 && mouseX<352 && mouseY> 462 && mouseY<705) {
 		let newApple = {
@@ -343,7 +312,6 @@ function mousePressed() {
 			r: random(10,25)
 		};
 		apple.push(newApple);
-		appleSound.play();
 	}
 }
 
