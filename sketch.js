@@ -225,6 +225,8 @@ function draw() {
   		flowers(614,250);
 
   		springSound.loop();
+	} else{
+		springSound.stop();
 	}
 
 	//Summer apples & flowers
