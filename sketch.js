@@ -197,7 +197,7 @@ function draw() {
   		for (let i = 0; i < 150; i++){
 		snow[i].snowing();
 		}
-		//snowSound.play();
+		snowSound.play();
 	}
 
 	//spring flowers
