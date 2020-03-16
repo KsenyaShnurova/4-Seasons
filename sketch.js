@@ -7,7 +7,11 @@ let rain = [];
 let rainSpeed = 5;
 let leaves = [];
 let leafSpeed = 2;
+let appleSound, snowSound, rainSound, springSound;
 
+function preload() {
+  snowSound = loadSound("Sounds/Snow.mp3");
+}
 
 function setup() {
 	createCanvas(800,800);
@@ -188,12 +192,7 @@ function draw() {
 	tree(x,y+400);
 	tree(x+400,y+400);	
 
-	//winter falling snow
-	if (mouseIsPressed && mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
-  		for (let i = 0; i < 150; i++){
-		snow[i].snowing();
-		}
-	}
+	
 
 	//spring flowers
 	if (mouseX>400 && mouseX<800 && mouseY>0 && mouseY<400) {
@@ -312,6 +311,14 @@ function mousePressed() {
 			r: random(10,25)
 		};
 		apple.push(newApple);
+	}
+
+	//winter falling snow
+	if (mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
+  		for (let i = 0; i < 150; i++){
+		snow[i].snowing();
+		}
+		snowSound.play();
 	}
 }
 
