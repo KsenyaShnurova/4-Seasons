@@ -14,6 +14,7 @@ function preload() {
   snowSound = loadSound("Sounds/Snow.mp3");
   rainSound = loadSound("Sounds/rainsound.mp3");
   springSound = loadSound("Sounds/spring.mp3");
+  appleSound = loadSound("Sounds/pop.mp3");
 }
 
 function setup() {
@@ -224,7 +225,6 @@ function draw() {
   		flowers(546,148);
   		flowers(614,250);
 
-  		springSound.loop();
 	}
 
 	//Summer apples & flowers
@@ -313,6 +313,7 @@ function mousePressed() {
 			ypos: mouseY
 		};
 		flower.push(newFlower);
+		appleSound.play();
 	}
 	if (mouseX>25 && mouseX<352 && mouseY> 462 && mouseY<705) {
 		let newApple = {
@@ -321,6 +322,7 @@ function mousePressed() {
 			r: random(10,25)
 		};
 		apple.push(newApple);
+		appleSound.play();
 	}
 	//snow sound
 	if (mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
