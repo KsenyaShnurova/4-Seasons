@@ -297,6 +297,8 @@ function apples(x,y,r) {
 }
 
 function mousePressed() {
+
+	getAudioContext().resume();
 	if (mouseX>20 && mouseX<390 && mouseY> 755 && mouseY<790) {
 		let newFlower = {
 			xpos: mouseX,
