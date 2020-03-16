@@ -8,6 +8,7 @@ let rainSpeed = 5;
 let leaves = [];
 let leafSpeed = 2;
 let appleSound, snowSound, rainSound, springSound;
+let sampleIsPLaying = false;
 
 function preload() {
   snowSound = loadSound("Sounds/Snow.mp3");
@@ -197,7 +198,6 @@ function draw() {
   		for (let i = 0; i < 150; i++){
 		snow[i].snowing();
 		}
-		snowSound.play();
 	}
 
 	//spring flowers
@@ -304,8 +304,6 @@ function apples(x,y,r) {
 
 function mousePressed() {
 
-	getAudioContext().resume();
-
 	if (mouseX>20 && mouseX<390 && mouseY> 755 && mouseY<790) {
 		let newFlower = {
 			xpos: mouseX,
@@ -321,6 +319,18 @@ function mousePressed() {
 		};
 		apple.push(newApple);
 	}
+
+	if (mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
+		if(sampleIsPLaying){
+			snowSound.stop();
+			sampleIsPLaying = false;
+		} else {
+			snowSound.loop();
+			sampleIsPLaying = true;
+		}
+		
+	}
+
 }
 
 
