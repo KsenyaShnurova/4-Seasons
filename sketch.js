@@ -193,7 +193,7 @@ function draw() {
 	tree(x+400,y+400);	
 
 	//winter falling snow
-	if (mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
+	if (mouseIsPressed && mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
   		for (let i = 0; i < 150; i++){
 		snow[i].snowing();
 		}
