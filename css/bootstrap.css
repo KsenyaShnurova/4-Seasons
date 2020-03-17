@@ -73,15 +73,6 @@ hr {
   overflow: visible;
 }
 
-#front{
-  font-family: heading !important;
-  text-align: center !important;
-  vertical-align: middle !important;
-  padding: 50% !important;
-  border-color: #A089ED !important;
-  border-radius: 10% !important;
-}
-
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
