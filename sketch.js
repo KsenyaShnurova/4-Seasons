@@ -1,14 +1,14 @@
 let x,y; //coordinates for the tree
 let snow = []; //snow array
 let dropSpeed = 5; //snow speed
-let flower = []; 
+let flower = [];
 let apple = [];
 let rain = [];
 let rainSpeed = 5;
 let leaves = [];
 let leafSpeed = 2;
 let appleSound, snowSound, rainSound, springSound; //variables for the sound
-let sampleIsPLaying = false; 
+let sampleIsPLaying = false;
 
 function preload() { //function that loads the sounds into the webtoy
   snowSound = loadSound("Sounds/Snow.mp3");
@@ -139,7 +139,7 @@ function draw() {
 
 	  }
 	//------Spring------
-	//creates the tress crown by using vertexes
+	//creates the trees crown by using vertexes
   	stroke("#96C66A");
   	strokeWeight(3);
 	fill("#BEEE93");
@@ -157,7 +157,7 @@ function draw() {
 	endShape();
 
 	//------Summer------
-	//creates the tress crown by using vertexes
+	//creates the trees crown by using vertexes
   	stroke(53,124,27);
   	strokeWeight(3);
 	fill(74,156,45);
@@ -175,7 +175,7 @@ function draw() {
 	endShape();
 
 	//------Autumn------
-	//creates the tress crown by using vertexes
+	//creates the trees crown by using vertexes
  	stroke("#FBAC1F");
   	strokeWeight(3);
 	fill("#FFDB4D");
@@ -262,6 +262,7 @@ function draw() {
 	if (mouseIsPressed && mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {// checks the conditions
   		for (let i = 0; i < 100; i++){ //goes through the loop
 			rain[i].raining(); //calls "raining" from the rain class, in order to create the rain
+		}
 	}
 
 	if (mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {//checks the conditions
