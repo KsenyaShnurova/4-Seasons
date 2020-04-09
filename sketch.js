@@ -25,11 +25,11 @@ function setup() {
 	}
 
 	for (let i = 0; i < 100; i++){
-		rain[i] = new Rain();
+		rain.push(new Rain());
 	}
 
 	for (let i = 0; i < 10; i++){
-		leaves[i] = new Leaf();
+		leaves.push (new Leaf());
 	}
 }
 
@@ -467,30 +467,36 @@ class Snow {
   }
 }
 
-function Rain() {
-  this.len = random(12);
-  this.x = random(410,790);
-  this.y = random(400,750);
-  this.raining = function() {
-  	stroke("#E9E3E3");
-    line(this.x, this.y, this.x, this.y + this.len);
-    if (this.y < 750) this.y += rainSpeed;
-    else {
-      	this.x = random(410,790);
+class Rain {
+	constructor (){
+  		this.len = random(12);
+  		this.x = random(410,790);
   		this.y = random(400,750);
+  	}
+
+  	raining() {
+  		stroke("#E9E3E3");
+    	line(this.x, this.y, this.x, this.y + this.len);
+    	if (this.y < 750) this.y += rainSpeed;
+    	else {
+      		this.x = random(410,790);
+  			this.y = random(400,750);
     }
   }
 }
 
-function Leaf() {
-  this.x = random(430,750);
-  this.y = random(500,765);
-  this.falling = function() {
-  	leaf(this.x,this.y)
-    if (this.y < 765) this.y += leafSpeed;
-    else {
-      	this.x = random(430,750);
+class Leaf {
+	constructor (){
+  		this.x = random(430,750);
   		this.y = random(500,765);
+  	}
+
+  	falling() {
+  		leaf(this.x,this.y);
+    	if (this.y < 765) this.y += leafSpeed;
+    	else {
+      		this.x = random(430,750);
+  			this.y = random(500,765);
     }
   }
 }
