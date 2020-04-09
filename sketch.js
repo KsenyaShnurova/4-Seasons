@@ -21,7 +21,7 @@ function setup() {
 	createCanvas(800,800);
 
 	for (let i = 0; i < 150; i++){
-		snow[i] = new Snow();
+		snow.push(new Snow());
 	}
 
 	for (let i = 0; i < 100; i++){
@@ -449,17 +449,20 @@ function tree(x,y) {
 	line(x-54,y-122,x-77,y-108);
 }
 
-function Snow() {
-  this.len = random(5);
-  this.x = random(10,390);
-  this.y = random(0,350);
-  this.snowing = function() {
-  	stroke(216,252,255);
-    line(this.x, this.y, this.x, this.y + this.len);
-    if (this.y < 350) this.y += dropSpeed;
-    else {
-      	this.x = random(10,390);
+class Snow() {
+	constructor (){
+		this.len = random(5);
+  		this.x = random(10,390);
   		this.y = random(0,350);
+	}
+  	
+  	snowing(){
+  		stroke(216,252,255);
+   		line(this.x, this.y, this.x, this.y + this.len);
+    	if (this.y < 350) this.y += dropSpeed;
+    	else {
+      		this.x = random(10,390);
+  			this.y = random(0,350);
     }
   }
 }
