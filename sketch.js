@@ -449,7 +449,7 @@ function tree(x,y) {
 	line(x-54,y-122,x-77,y-108);
 }
 
-class Snow() {
+class Snow {
 	constructor (){
 		this.len = random(5);
   		this.x = random(10,390);
