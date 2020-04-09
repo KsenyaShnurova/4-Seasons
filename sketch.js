@@ -1,16 +1,16 @@
 let x,y; //coordinates for the tree
-let snow = [];
-let dropSpeed = 5;
-let flower = [];
+let snow = []; //snow array
+let dropSpeed = 5; //snow speed
+let flower = []; 
 let apple = [];
 let rain = [];
 let rainSpeed = 5;
 let leaves = [];
 let leafSpeed = 2;
-let appleSound, snowSound, rainSound, springSound;
-let sampleIsPLaying = false;
+let appleSound, snowSound, rainSound, springSound; //variables for the sound
+let sampleIsPLaying = false; 
 
-function preload() {
+function preload() { //function that loads the sounds into the webtoy
   snowSound = loadSound("Sounds/Snow.mp3");
   rainSound = loadSound("Sounds/rainsound.mp3");
   springSound = loadSound("Sounds/spring.mp3");
@@ -20,15 +20,15 @@ function preload() {
 function setup() {
 	createCanvas(800,800);
 
-	for (let i = 0; i < 150; i++){
+	for (let i = 0; i < 150; i++){ //goes through the loop and puts every element of the snow class into the array
 		snow.push(new Snow());
 	}
 
-	for (let i = 0; i < 100; i++){
+	for (let i = 0; i < 100; i++){ //does the same for the rain
 		rain.push(new Rain());
 	}
 
-	for (let i = 0; i < 10; i++){
+	for (let i = 0; i < 10; i++){ //same for the falling leaves
 		leaves.push (new Leaf());
 	}
 }
@@ -36,22 +36,23 @@ function setup() {
 
 function draw() {
 	//------Winter------
-	if (keyCode===78) {
+	if (keyCode===78) { //sets the condition that if the user presses the "N" key on the keyboard than the night background will be displayed
 
-		//winter night
-		fill("#22176F");
+		//background for winter night
+		fill("#22176F"); //background colour
 		strokeWeight(5);
 		stroke(0);
-		rect(0,0,400,400);
+		rect(0,0,400,400); //sets the size of a square for the winter season
 		noStroke();
 		fill(255);
-		arc(200, 397, 395, 100, PI, TWO_PI);
+		arc(200, 397, 395, 100, PI, TWO_PI); //ground
+		//creates a moon, by using to ellipses
 		fill("#FFFEE5");
 	  	ellipse(350,46,70);
 	  	fill("#22176F");
 	  	ellipse(325,46,70);
 
-	  	//spring night
+	  	//background for spring night
 	  	fill("#552134");
 	  	strokeWeight(5);
 	  	stroke(0);
@@ -64,7 +65,7 @@ function draw() {
 	  	fill("#552134");
 	  	ellipse(725,46,70);
 
-	  	//summer night
+	  	//background for summer night
 	  	fill("#254411");
 		strokeWeight(5);
 		stroke(0);
@@ -77,7 +78,7 @@ function draw() {
 	  	fill("#254411");
 	  	ellipse(325,446,70);
 
-	  	//autumn night
+	  	//background for autumn night
 	  	fill("#935000");
 	 	strokeWeight(5);
 	 	stroke(0);
@@ -90,9 +91,9 @@ function draw() {
 	  	fill("#935000");
 	  	ellipse(725,446,70);
 
-	  } if (keyCode===68) {
+	  } if (keyCode===68) { //sets the condition that if the user presses the "D" key on the keyboard than the day background will be displayed
 
-	  	//winter day
+	  	//background for winter day
 		fill("#ADCEF0");
 		strokeWeight(5);
 		stroke(0);
@@ -103,7 +104,7 @@ function draw() {
 		fill("#FFFEE5");
 	  	ellipse(350,46,70);
 
-	  	//spring day
+	  	//background for spring day
 	  	fill("#E7BCCC");
 	  	strokeWeight(5);
 	  	stroke(0);
@@ -114,7 +115,7 @@ function draw() {
 		fill("#FAF8B5");
 	  	ellipse(750,46,70);
 
-	  	//summer day
+	  	//background for summer day
 	  	fill("#D6F1C4");
 		strokeWeight(5);
 		stroke(0);
@@ -125,7 +126,7 @@ function draw() {
 		fill("#FFFA54");
 	  	ellipse(350,446,70);
 
-	  	//autumn day
+	  	//background for autumn day
 	  	fill("#F6B96F");
 	 	strokeWeight(5);
 	 	stroke(0);
@@ -138,6 +139,7 @@ function draw() {
 
 	  }
 	//------Spring------
+	//creates the tress crown by using vertexes
   	stroke("#96C66A");
   	strokeWeight(3);
 	fill("#BEEE93");
@@ -155,6 +157,7 @@ function draw() {
 	endShape();
 
 	//------Summer------
+	//creates the tress crown by using vertexes
   	stroke(53,124,27);
   	strokeWeight(3);
 	fill(74,156,45);
@@ -172,6 +175,7 @@ function draw() {
 	endShape();
 
 	//------Autumn------
+	//creates the tress crown by using vertexes
  	stroke("#FBAC1F");
   	strokeWeight(3);
 	fill("#FFDB4D");
@@ -189,23 +193,27 @@ function draw() {
 	endShape();
 
 	//------4 Trees------
+
+	// calls the tree function 4 times and uses different coordinates for it, so that it is placed in the specific square
 	x = 200;
 	y = 400;
-	tree(x,y);
-	tree(x+400,y);
-	tree(x,y+400);
-	tree(x+400,y+400);	
+	tree(x,y); //winter tree
+	tree(x+400,y); // spring tree
+	tree(x,y+400); //summer tree
+	tree(x+400,y+400);	//autumn tree
 
 	//winter falling snow
-	if (mouseIsPressed && mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
-  		for (let i = 0; i < 150; i++){
-		snow[i].snowing();
+	//checks that the mouse is in the winter square and that it is pressed and then creats falling snow
+	if (mouseIsPressed && mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){ //conditions for the snow
+  		for (let i = 0; i < 150; i++){ //goes through the loop to create the snow
+			snow[i].snowing();//calls "snowing" from the snow class, in order to create falling snow
 		}
 	} 
 
 	//spring flowers
-	if (mouseX>400 && mouseX<800 && mouseY>0 && mouseY<400) {
-		
+	//checks that the mouse is in the spring square and creates the flowers on the trees
+	if (mouseX>400 && mouseX<800 && mouseY>0 && mouseY<400) {//checks the conditions
+		//calls the flower function and puts them in a different place according to the coodrinates
   		flowers(748,281);
   		flowers(618,196);
   		flowers(567,105);
@@ -225,7 +233,8 @@ function draw() {
   		flowers(546,148);
   		flowers(614,250);
 
-  		if (!springSound.isPlaying()){
+  		//creates the sound for the spring and checks that it is plaing only when the mouse is in the square
+  		if (!springSound.isPlaying()){ 
   			springSound.loop();
   		}
   		
@@ -234,13 +243,14 @@ function draw() {
 	}
 
 	//Summer apples & flowers
+	//checks that the mouse is in the summer square and then creates apples and flowers when it is pressed 
 	if (mouseX>0 && mouseX<400 && mouseY>400 && mouseY<800) {
 		
-			for (let i = 0; i < flower.length; i++) {
+			for (let i = 0; i < flower.length; i++) {//goes through the loop  to create flowers
 				let currentFlower = flower[i];
 				flowers(currentFlower.xpos,currentFlower.ypos);
 			}
-			for (let i = 0; i < apple.length; i++) {
+			for (let i = 0; i < apple.length; i++) {//goes through the loop  to create apples
 				let currentApple = apple[i];
 				apples(currentApple.xpos,currentApple.ypos,currentApple.r); 	
   			}
@@ -248,26 +258,26 @@ function draw() {
   	}
 
   	//Autumn rain & leaves
-	if (mouseIsPressed && mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {
-  		for (let i = 0; i < 100; i++){
-			rain[i].raining();
-		}
+  	//checks that the mouse is in the autumn square and then creates falling leaves and that it is pressed to create rain 
+	if (mouseIsPressed && mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {// checks the conditions
+  		for (let i = 0; i < 100; i++){ //goes through the loop
+			rain[i].raining(); //calls "raining" from the rain class, in order to create the rain
 	}
 
-	if (mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {
-  		for (let i = 0; i < 10; i++){
-			leaves[i].falling();
+	if (mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {//checks the conditions
+  		for (let i = 0; i < 10; i++){//goes through the loop
+			leaves[i].falling();//calls "falling" from the leaf class, in order to create falling leaves
 		}
 	}
 
 
 }	
 
-function leaf(x,y) { 
+function leaf(x,y) { //function for creating a leaf
 	stroke("#F97C0A ");
 	strokeWeight(2);
 	fill("#FFB65E");
-	beginShape();
+	beginShape(); //creates a leaf shape by using vertexes. the coordinates are set when the funciton is called
 	vertex(x,y);
 	vertex(x,y-13);
 	vertex(x-8,y-8);
@@ -293,61 +303,61 @@ function leaf(x,y) {
 	endShape();
 }
 
-function flowers(x,y){
+function flowers(x,y){ //function that creates flowers
   	noStroke();
   	fill("#FFEBFB");
   	let r = 8;
-  	ellipse(x,y,r);
+  	ellipse(x,y,r); //uses 4 ellipses to create a flower
   	ellipse(x+r,y,r);
   	ellipse(x,y+r,r);
   	ellipse(x+r,y+r,r);
   	fill("#FDFFBA");
-  	ellipse(x+(r/2),y+(r/2),r);
+  	ellipse(x+(r/2),y+(r/2),r);//flower centre
 }
 
-function apples(x,y,r) {
+function apples(x,y,r) { //funciton that creates an apple
 	stroke("#BB433D");
 	fill("#FB2A1F");
 	ellipse(x,y,r);
 }
 
-function mousePressed() {
+function mousePressed() { //checks if mouse is pressed
 
-	if (mouseX>20 && mouseX<390 && mouseY> 755 && mouseY<790) {
+	if (mouseX>20 && mouseX<390 && mouseY> 755 && mouseY<790) { //checks that the mouse was pressed inside the tree crown in the summer square
 		let newFlower = {
 			xpos: mouseX,
 			ypos: mouseY
 		};
-		flower.push(newFlower);
-		appleSound.play();
+		flower.push(newFlower); //creates a new flower
+		appleSound.play(); //playes the sound 
 	}
-	if (mouseX>25 && mouseX<352 && mouseY> 462 && mouseY<705) {
+	if (mouseX>25 && mouseX<352 && mouseY> 462 && mouseY<705) {//checks that the mouse was pressed inside the tree crown in the summer square
 		let newApple = {
 			xpos: mouseX,
 			ypos: mouseY,
 			r: random(10,25)
 		};
-		apple.push(newApple);
-		appleSound.play();
+		apple.push(newApple); //creates a new apple
+		appleSound.play();//playes the sound
 	}
 	//snow sound
-	if (mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){
-		snowSound.loop();
+	if (mouseX>0 && mouseX<400 && mouseY>0 && mouseY<400){ //checks that the mouse is pressed in the winter square
+		snowSound.loop(); //playes the snow sound
 	}
 
 	//rain sound
-	if (mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) {
-		rainSound.loop();
+	if (mouseX>400 && mouseX<800 && mouseY>400 && mouseY<800) { //checks that the mouse was pressed in the autumn square
+		rainSound.loop(); //playes the rain sound
 	}
 
 }
-function mouseReleased(){
-	snowSound.stop();
-	rainSound.stop();
+function mouseReleased(){ //function for stopping the rain and snow sound from playing, once the mouse is released
+	snowSound.stop(); //stops the snow sound
+	rainSound.stop(); //stops the rain sound
 }
 
 
-function tree(x,y) {
+function tree(x,y) { //function that creates a tree by using lines. The x and y coordinates are specified when the function is called
 	stroke(0);
 	strokeWeight(3);
 	line(x,y,x,y-82);
@@ -449,54 +459,54 @@ function tree(x,y) {
 	line(x-54,y-122,x-77,y-108);
 }
 
-class Snow {
-	constructor (){
+class Snow { //class for the falling snow
+	constructor (){ //sets the variables as random numbers in the given range
 		this.len = random(5);
   		this.x = random(10,390);
   		this.y = random(0,350);
 	}
   	
-  	snowing(){
+  	snowing(){ //creates the falling snow by using lines
   		stroke(216,252,255);
    		line(this.x, this.y, this.x, this.y + this.len);
     	if (this.y < 350) this.y += dropSpeed;
     	else {
-      		this.x = random(10,390);
-  			this.y = random(0,350);
+      		this.x = random(10,390); //are for where the snow can be 
+  			this.y = random(0,350); //are for where the snow can be 
     }
   }
 }
 
-class Rain {
-	constructor (){
+class Rain {//class for the rain
+	constructor (){//sets the variables as random numbers in the given range
   		this.len = random(12);
   		this.x = random(410,790);
   		this.y = random(400,750);
   	}
 
-  	raining() {
+  	raining() {//creates the rain by using lines
   		stroke("#E9E3E3");
     	line(this.x, this.y, this.x, this.y + this.len);
     	if (this.y < 750) this.y += rainSpeed;
     	else {
-      		this.x = random(410,790);
-  			this.y = random(400,750);
+      		this.x = random(410,790); //are for where the rain can be 
+  			this.y = random(400,750); //are for where the rain can be 
     }
   }
 }
 
-class Leaf {
-	constructor (){
+class Leaf {//class for the falling leaves
+	constructor (){//sets the variables as random numbers in the given range
   		this.x = random(430,750);
   		this.y = random(500,765);
   	}
 
-  	falling() {
+  	falling() {//creates the leaves by calling the leaf function
   		leaf(this.x,this.y);
     	if (this.y < 765) this.y += leafSpeed;
     	else {
-      		this.x = random(430,750);
-  			this.y = random(500,765);
+      		this.x = random(430,750);  //are for where the leaves can be 
+  			this.y = random(500,765); //are for where the leaves can be 
     }
   }
 }
